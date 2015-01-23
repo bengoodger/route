@@ -9,9 +9,16 @@ var Sonos = require('../../modules/sonos/sonos.js');
 //var Denon = require('route.io-denon');
 var Web = require('../../modules/web/web.js');
 var Telnet = require('../../modules/telnet/telnet.js');
+var SamsungExLink = require('../../modules/samsung_exlink/samsung_exlink.js');
 
 // Map of commands to routers that service that command.
 var route = Route.create();
+
+var livingroom_tv = route.addDevice({
+  type : SamsungExLink,
+  name : "FamilyRoomTV",
+  init : { host: "10.1.10.51" }
+})
 
 var sonos = route.addDevice({
   type : Sonos,
@@ -109,6 +116,10 @@ route.addEventMap({
     "Sonos.DiningRoom.Pause",
   ],
 
+  "Web.FamilyRoomTV.Off" : [
+    "FamilyRoomTV.Off",
+  ],
+
 //  "Web.MasterBedroom.ChromeCast" : "IR.B-ChromeCast",
 //  "Web.Masterbed.PS3" : "IR.B-PS3",
 
@@ -137,6 +148,10 @@ route.map("Web.Lutron.*", function(eventname, data) {
 
 route.map("Web.Sonos.*", function(eventname, data) {
   sonos.exec(eventname.substring(10)); // chop off "Web.Sonos."
+});
+
+route.map("Web.FamilyRoomTV.*", function(eventname, data) {
+  livingroom_tv.exec(eventname.substring(17)); // chop off "Web.FamilyRoomTV."
 });
 
 /*

@@ -68,6 +68,7 @@ function sendEvent(name) {
 }
 </script>
 <script src="functions.js"></script>
+<script src="button.js"></script>
 <script src="sonos.js"></script>
 <script src="switch.js"></script>
 <script src="status.js"></script>
@@ -77,7 +78,7 @@ function sendEvent(name) {
   <div class="column">
     <div class="room" style="left:20px;">
       <div class="room-name">FAMILY ROOM</div>
-      <div class="group" id="stereo"></div>
+      <div class="group" id="family-stereo"></div>
       <div class="group" id="family-lights"></div>
     </div>
 
@@ -193,6 +194,12 @@ new Switch("Lutron.MasterBathroomFan", "Fan", socket, $('master-bath-lights'));
 
 new Switch("Lutron.FrontPorchPendants", "Front Porch", socket, $('outdoor-lights'));
 new Switch("Lutron.FrontDoorSconces", "Front Door", socket, $('outdoor-lights'));
+
+new Button("FamilyRoomTV.On", "TV On", socket, $('family-stereo'));
+new Button("FamilyRoomTV.Off", "TV Off", socket, $('family-stereo'));
+new Button("FamilyRoomTV.VolumeUp", "Volume+", socket, $('family-stereo'));
+new Button("FamilyRoomTV.VolumeDown", "Volume-", socket, $('family-stereo'));
+new Button("FamilyRoomTV.Mute", "Mute", socket, $('family-stereo'));
 
 /*
 // Livingroom

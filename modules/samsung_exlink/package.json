@@ -1,0 +1,4 @@
+{ 
+  "name" : "SamsungEXLink",
+  "main" : "./samsung_exlink.js"
+}
