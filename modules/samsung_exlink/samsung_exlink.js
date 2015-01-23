@@ -1,6 +1,5 @@
 var EventEmitter = require('events').EventEmitter;
 var util = require('util');
-var http = require('http');
 var net = require('net');
 
 // Controls a Samsung TV via the EX.Link service port, attached via a
