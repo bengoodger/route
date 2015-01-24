@@ -51,8 +51,6 @@ SamsungEXLink.prototype.sendNextCommand = function() {
   if (!this.commandQueue.length) return;
   var buf = this.commandQueue.shift();
   console.log("> ", buf.join(","));
-
-  // TODO: This should likely allow waiting for a response to trigger the next command
   this.client.write(new Buffer(buf), undefined, function () {
     setTimeout(this.sendNextCommand.bind(this), 300);  
   }.bind(this));

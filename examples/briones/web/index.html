@@ -2,7 +2,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
 <!--<link rel="apple-touch-startup-image" href="title.png" />-->
-<title>Cambridge</title>
+<title>Briones</title>
 <style>
 * {
   -webkit-touch-callout: none;
@@ -78,7 +78,9 @@ function sendEvent(name) {
   <div class="column">
     <div class="room" style="left:20px;">
       <div class="room-name">FAMILY ROOM</div>
+      <div class="group" id="family-receiver"></div>
       <div class="group" id="family-stereo"></div>
+      <div class="group" id="family-tv"></div>
       <div class="group" id="family-lights"></div>
     </div>
 
@@ -195,11 +197,50 @@ new Switch("Lutron.MasterBathroomFan", "Fan", socket, $('master-bath-lights'));
 new Switch("Lutron.FrontPorchPendants", "Front Porch", socket, $('outdoor-lights'));
 new Switch("Lutron.FrontDoorSconces", "Front Door", socket, $('outdoor-lights'));
 
-new Button("FamilyRoomTV.On", "TV On", socket, $('family-stereo'));
-new Button("FamilyRoomTV.Off", "TV Off", socket, $('family-stereo'));
-new Button("FamilyRoomTV.VolumeUp", "Volume+", socket, $('family-stereo'));
-new Button("FamilyRoomTV.VolumeDown", "Volume-", socket, $('family-stereo'));
-new Button("FamilyRoomTV.Mute", "Mute", socket, $('family-stereo'));
+new Button("FamilyRoomTV.On", "TV On", socket, $('family-tv'));
+new Button("FamilyRoomTV.Off", "TV Off", socket, $('family-tv'));
+new Button("FamilyRoomTV.VolumeUp", "Volume+", socket, $('family-tv'));
+new Button("FamilyRoomTV.VolumeDown", "Volume-", socket, $('family-tv'));
+new Button("FamilyRoomTV.Mute", "Mute", socket, $('family-tv'));
+
+new Button("FamilyRoomReceiver.On", "Receiver On", socket, $('family-stereo'));
+new Button("FamilyRoomReceiver.Off", "Receiver Off", socket, $('family-stereo'));
+new Button("FamilyRoomReceiver.VolumeUp", "Receiver Volume+", socket, $('family-stereo'));
+new Button("FamilyRoomReceiver.VolumeDown", "Receiver Volume-", socket, $('family-stereo'));
+new Button("FamilyRoomReceiver.InputVideo1", "Receiver HDMI1", socket, $('family-stereo'));
+new Button("FamilyRoomReceiver.InputVideo2", "Receiver HDMI2", socket, $('family-stereo'));
+new Button("FamilyRoomReceiver.InputVideo3", "Receiver HDMI2", socket, $('family-stereo'));
+new Button("FamilyRoomReceiver.InputVideo4", "Receiver HDMI3", socket, $('family-stereo'));
+new Button("FamilyRoomReceiver.MuteOn", "Mute On", socket, $('family-stereo'));
+new Button("FamilyRoomReceiver.MuteOff", "Mute Off", socket, $('family-stereo'));
+
+// Livingroom
+new Stereo([
+  {
+    name : "TiVo",
+    action : "FamilyRoom.TiVo",
+    image : "stereo-sonos.png",
+    on : "Integra.InputVideo1"
+  },
+  {
+    name : "ChromeCast",
+    action : "FamilyRoom.ChromeCast",
+    image : "stereo-roku.png",
+    on : "Integra.InputVideo2"
+  },
+  {
+    name : "PS4",
+    action : "FamilyRoom.PS4",
+    image : "stereo-ps3.png",
+    on : "Integra.InputVideo4"
+  },
+  {
+    name : "BluRay",
+    action : "FamilyRoom.BluRay",
+    image : "stereo-ps3.png",
+    on : "Integra.InputVideo3"
+  },
+], socket, $('family-receiver'));
 
 /*
 // Livingroom

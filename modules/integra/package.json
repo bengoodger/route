@@ -1,0 +1,4 @@
+{ 
+  "name" : "Integra",
+  "main" : "./integra.js"
+}
