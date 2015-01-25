@@ -1,0 +1,4 @@
+{ 
+  "name" : "TiVo",
+  "main" : "./tivo.js"
+}

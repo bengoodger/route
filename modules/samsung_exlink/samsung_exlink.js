@@ -37,7 +37,7 @@ SamsungEXLink.prototype.reconnect = function() {
   if (this._reconnecting)
     return;
   this._reconnecting = true;
-  setTimeout(this._connect.bind(this), 1000);
+  setTimeout(this.connect.bind(this), 1000);
 }
 
 SamsungEXLink.prototype.send = function(buf) {

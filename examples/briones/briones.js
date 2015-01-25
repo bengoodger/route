@@ -11,6 +11,7 @@ var Web = require('../../modules/web/web.js');
 var Telnet = require('../../modules/telnet/telnet.js');
 var SamsungExLink = require('../../modules/samsung_exlink/samsung_exlink.js');
 var Integra = require('../../modules/integra/integra.js');
+var Tivo = require('../../modules/tivo/tivo.js');
 
 // Map of commands to routers that service that command.
 var route = Route.create();
@@ -25,6 +26,12 @@ var livingroom_receiver = route.addDevice({
   type : Integra,
   name : "FamilyRoomReceiver",
   init : { host: "10.1.10.10" }
+});
+
+var livingroom_tivo = route.addDevice({
+  type : Tivo,
+  name : "FamilyRoomTivo",
+  init : { host: "10.1.10.25" }
 });
 
 var sonos = route.addDevice({
@@ -160,6 +167,10 @@ route.map("Web.FamilyRoomTV.*", function(eventname, data) {
 route.map("Web.FamilyRoomReceiver.*", function(eventname, data) {
   livingroom_receiver.exec(eventname.substring(23)); // chop off "Web.FamilyRoomReceiver."
 });
+
+route.map("Web.FamilyRoomTivo.*", function(eventname, data) {
+  livingroom_tivo.exec(eventname.substring(19)); // chop off "Web.FamilyRoomTivo."
+})
 
 /*
 route.map("Web.Denon.*", function(eventname, data) {

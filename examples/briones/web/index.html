@@ -79,6 +79,7 @@ function sendEvent(name) {
     <div class="room" style="left:20px;">
       <div class="room-name">FAMILY ROOM</div>
       <div class="group" id="family-receiver"></div>
+      <div class="group" id="family-tivo"></div>
       <div class="group" id="family-stereo"></div>
       <div class="group" id="family-tv"></div>
       <div class="group" id="family-lights"></div>
@@ -241,6 +242,40 @@ new Stereo([
     on : "Integra.InputVideo3"
   },
 ], socket, $('family-receiver'));
+
+new Button("FamilyRoomTivo.TeleportTivo", "Tivo Home", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.TeleportLiveTV", "Tivo Live TV", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.TeleportGuide", "Tivo Guide", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.TeleportNowPlaying", "Tivo Playlist", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.ThumbsUp", "Tivo Thumbs Up", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.ThumbsDown", "Tivo Thumbs Down", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.ChannelUp", "Tivo Channel Up", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.ChannelDown", "Tivo Channel Down", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Up", "Tivo Up", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Down", "Tivo Down", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Left", "Tivo Right", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Right", "Tivo Right", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Select", "Tivo Select", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.CCOn", "Tivo CC On", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.CCOff", "Tivo CC Off", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Play", "Tivo Play", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Pause", "Tivo Pause", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Forward", "Tivo Forward", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Reverse", "Tivo Reverse", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Slow", "Tivo Slow", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Advance", "Tivo 30-sec Skip", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Replay", "Tivo Replay", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Record", "Tivo Record", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Num0", "Tivo 0", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Num1", "Tivo 1", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Num2", "Tivo 2", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Num3", "Tivo 3", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Num4", "Tivo 4", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Num5", "Tivo 5", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Num6", "Tivo 6", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Num7", "Tivo 7", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Num8", "Tivo 8", socket, $('family-tivo'));
+new Button("FamilyRoomTivo.Num9", "Tivo 9", socket, $('family-tivo'));
 
 /*
 // Livingroom
