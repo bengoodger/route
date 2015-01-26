@@ -65,7 +65,22 @@ LutronRadioRA2.prototype.exec = function(command) {
 
   if (deviceType == LutronRadioRA2.TYPE_LIGHT) {
     var action = segments.shift().toLowerCase();
-    var level = (action == "on") ? 100 : (action == "off") ? 0 : level;
+    var level = 0;
+    switch (action) {
+      case "on":
+        level = 100;
+        break;
+      case "off":
+        level = 0;
+        break;
+      default:
+        level = parseInt(action);
+        if (level > 100)
+          level = 100;
+        else if (level < 0)
+          level = 0;
+        break;
+    }
     if (!isNaN(level))
       this.send("#OUTPUT," + [deviceId, 1, level].join(","));
   }
