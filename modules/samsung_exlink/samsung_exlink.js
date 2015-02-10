@@ -24,12 +24,14 @@ SamsungEXLink.prototype.PORT = 4999;
 
 SamsungEXLink.prototype.connect = function() {
   this._reconnecting = false;
+  console.log("ExLink: " + this.host);
   this.client = net.connect({ host: this.host, port: this.PORT });
   this.client.on('error', this.handleError.bind(this));
   this.client.on('close', this.handleError.bind(this));
 }
 
 SamsungEXLink.prototype.handleError = function(error) {
+  console.log("SamsungEXLink.Error: " + error);
   setTimeout(this.reconnect.bind(this), 10000);
 }
 
@@ -50,7 +52,7 @@ SamsungEXLink.prototype.send = function(buf) {
 SamsungEXLink.prototype.sendNextCommand = function() {
   if (!this.commandQueue.length) return;
   var buf = this.commandQueue.shift();
-  console.log("> ", buf.join(","));
+  console.log(this.host + "> ", buf.join(","));
   this.client.write(new Buffer(buf), undefined, function () {
     setTimeout(this.sendNextCommand.bind(this), 300);  
   }.bind(this));

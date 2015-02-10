@@ -63,8 +63,8 @@ Tivo.prototype.handleData = function(data) {
 }
 
 Tivo.prototype.handleError = function(error) {
-  console.log("Error: " + error);
-  setTimeout(this.reconnect.bind(this), 10000);
+  console.log("Tivo.Error@" + this.host + ":" + error);
+  setTimeout(this.reconnect.bind(this), 1000);
 }
 
 Tivo.prototype.reconnect = function() {
