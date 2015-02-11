@@ -167,6 +167,8 @@ Sonos.prototype.componentForIP = function(ip) {
 
 Sonos.prototype.handleReq = function(req, res) {
   var address = req.connection.remoteAddress;
+  if (req.connection.remoteFamily == "IPv6")
+    address = address.substring("::ffff:".length);
   var component = this.componentForIP(address);
   component.handleReq(req,res);
 };
