@@ -86,7 +86,7 @@ Tivo.prototype.sendNextCommand = function() {
   var buf = this.commandQueue.shift();
   console.log("> ", buf);
   this.client.write(buf + "\r", undefined, function () {
-    setTimeout(this.sendNextCommand.bind(this), 300);  
+    setTimeout(this.sendNextCommand.bind(this), 2000);  
   }.bind(this));
 };
 

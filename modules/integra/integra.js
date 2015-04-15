@@ -13,6 +13,7 @@ function Integra(data) {
   this.actions.MuteOn = "!1AMT01";
   this.actions.VolumeUp = "!1MVLUP";
   this.actions.VolumeDown = "!1MVLDOWN";
+  this.actions.VolumeSet = "!MVL";
   this.actions.InputVideo1 = "!1SLI00";  // Blu-Ray
   this.actions.InputVideo2 = "!1SLI01";  // TiVo
   this.actions.InputVideo3 = "!1SLI02";  // PS4
@@ -89,7 +90,25 @@ Integra.prototype.sendNextCommand = function() {
 Integra.prototype.exec = function(command) {
   console.log("*  Integra Executing: " + command);
 
-  if (command in this.actions) {
+  var VOLUME_SET_PREFIX = "VolumeSet.";
+  if (command.substring(0, VOLUME_SET_PREFIX.length) ==
+      VOLUME_SET_PREFIX) {
+    var level = command.substring(VOLUME_SET_PREFIX.length, command.length);
+    var levelAsInt = parseInt(level);
+    if (isNaN(levelAsInt) || (levelAsInt < 0 || levelAsInt > 50)) {
+      console.log("*  Integra: Invalid volume level: " + levelAsInt);
+      return;
+    }
+    level = levelAsInt.toString(16);
+    if (level.length > 3) {
+      console.log("*  Integra: Invalid volume level: " + level);
+      return;
+    }
+    if (level.length == 1)
+      level = "0" + level;
+    this.send(("!1MVL" + level).toUpperCase());
+    this.emit("DeviceEvent", command);
+  } else if (command in this.actions) {
     this.send(this.actions[command]);
     this.emit("DeviceEvent", command);
   }
