@@ -39,6 +39,10 @@ function Tivo(data) {
   this.commands.Num7 = "IRCODE NUM7";
   this.commands.Num8 = "IRCODE NUM8";
   this.commands.Num9 = "IRCODE NUM9";
+  this.commands.ActionA = "IRCODE ACTION_A";
+  this.commands.ActionB = "IRCODE ACTION_B";
+  this.commands.ActionC = "IRCODE ACTION_C";
+  this.commands.ActionD = "IRCODE ACTION_D";
   this.commands.SetChannel = "SETCH %d";
   this.commands.ForceChannel = "FORCECH %d";
   this.commandQueue = [];

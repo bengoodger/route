@@ -17,10 +17,10 @@ function Integra(data) {
   this.actions.InputVideo1 = "!1SLI00";  // Blu-Ray
   this.actions.InputVideo2 = "!1SLI01";  // TiVo
   this.actions.InputVideo3 = "!1SLI02";  // PS4
-  this.actions.InputVideo4 = "!!SLI03";  // Chromecast
-  this.actions.InputVideo5 = "!!SLI04";  // Chromecast
-  this.actions.InputVideo6 = "!!SLI05";  // Chromecast
-  this.actions.InputVideo7 = "!!SLI06";  // Chromecast
+  this.actions.InputVideo4 = "!1SLI03";  // Chromecast
+  this.actions.InputVideo5 = "!1SLI04";  // Chromecast
+  this.actions.InputVideo6 = "!1SLI05";  // Chromecast
+  this.actions.InputVideo7 = "!1SLI06";  // Chromecast
   this.actions.OutputHDMI1 = "!1HDO01";  // Main HDMI
   this.actions.OutputHDMI2 = "!1HDO02";  // Sub HDMI
   this.actions.OutputBoth = "!1HDO03";   // Both
